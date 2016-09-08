@@ -1,0 +1,59 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.job._id ? 'Edit Job' : 'New Job'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.jobForm" class="form-horizontal" ng-submit="vm.save(vm.form.jobForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Title</label>
+          <input name="title" type="text" ng-model="vm.job.title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="vm.form.jobForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Job title is required.</p>
+          </div>
+        </div>
+         
+        <div class="form-group" show-errors>
+          <label class="control-label" for="company">Company</label>
+          <input name="company" type="text" ng-model="vm.job.content" id="company" class="form-control" placeholder="company" required>
+          <div ng-messages="vm.form.jobForm.company.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Company is required.</p>
+          </div>
+        </div>
+          
+          <div class="form-group">
+            <label class="control-label" for="description">Description</label>
+              <div class="controls">
+                  <input name="description" ng-model ="vm.job.description" id="description" class="form-control" placeholder="description" >
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="requirements">Requirements</label>
+              <div class="controls">
+                  <input name="requirements" data-ng-model ="vm.job.requirements" id="requirements" class="form-control" placeholder="requirements">
+              </div>
+          </div>
+          <div class="form-group" >
+              <label class="control-label" for="hourly_wage">Hourley_wage</label>
+              <input name="hourly_wage" type="text" ng-model="vm.job.hourly_wage" id="hourly_wage" class="form-control" placeholder="hourly_wage" >
+          </div>
+           <div class="form-group" >
+              <label class="control-label" for="contact_email">Email</label>
+              <input name="contact_email" type="text" ng-model="vm.job.contact_email" id="contact_email" class="form-control" placeholder="contact_email" >
+          </div>
+       
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.job._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
